@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: fee5a509504a6fd4493fd93d35c1852f
+guid: 4d48ceb4ca1094242bed69f18de2c5e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2353571312451627304
-    second: Book_0
-  - first:
-      213: -2608732192183298087
-    second: Book_1
-  - first:
-      213: 4706218783883190146
-    second: Book_2
+      213: 9010208684872655921
+    second: AethraPL_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -82,8 +76,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 100
-    crunchedCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -132,57 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Book_0
+      name: AethraPL_0
       rect:
         serializedVersion: 2
-        x: 226
-        y: 823
-        width: 7
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 829aa3093a099a020800000000000000
-      internalID: 2353571312451627304
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Book_1
-      rect:
-        serializedVersion: 2
-        x: 282
-        y: 834
-        width: 9
-        height: 42
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9d7d9c294ebebcbd0800000000000000
-      internalID: -2608732192183298087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Book_2
-      rect:
-        serializedVersion: 2
-        x: 0
+        x: 390
         y: 0
-        width: 1496
-        height: 829
+        width: 1207
+        height: 1023
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28fd0a0ac09df4140800000000000000
-      internalID: 4706218783883190146
+      spriteID: 13469fd8f01ba0d70800000000000000
+      internalID: 9010208684872655921
       vertices: []
       indices: 
       edges: []
@@ -201,17 +151,14 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Book_0: 2353571312451627304
-      Book_1: -2608732192183298087
-      Book_2: 4706218783883190146
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
