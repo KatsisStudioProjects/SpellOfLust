@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AethraPL_0: 9010208684872655921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
