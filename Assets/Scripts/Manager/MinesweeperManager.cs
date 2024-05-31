@@ -1,11 +1,14 @@
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SpellOfLust
 {
     public class MinesweeperManager : MonoBehaviour
     {
+        public static MinesweeperManager Instance { private set; get; }
+
         [SerializeField]
         private Transform _mainContainer;
 
@@ -19,6 +22,8 @@ namespace SpellOfLust
 
         private void Awake()
         {
+            Instance = this;
+
             Assert.True(MineCount <= Size * Size);
             _grid = new TileData[Size, Size];
 
@@ -28,7 +33,7 @@ namespace SpellOfLust
                 for (int x = 0; x < Size; x++)
                 {
                     var go = Instantiate(_tilePrefab, line.transform);
-                    var data = new TileData(go);
+                    var data = new TileData(go, x, y);
 
                     _grid[x, y] = data;
                 }
@@ -44,7 +49,6 @@ namespace SpellOfLust
                 if (tile.HasMine) continue;
 
                 tile.HasMine = true;
-                tile.Text.text = "X";
                 mineLeft--;
             }
 
@@ -67,7 +71,26 @@ namespace SpellOfLust
                         }
                     }
                     _grid[x, y].AdjacentMines = count;
-                    _grid[x, y].Text.text = count.ToString();
+                }
+            }
+        }
+
+        public void ShowContent(int x, int y)
+        {
+            if (x < 0 || y < 0 || x >= Size || y >= Size || _grid[x, y].IsShown)
+            {
+                return;
+            }
+
+            _grid[x, y].Show();
+            if (_grid[x, y].AdjacentMines == 0)
+            {
+                for (int yi = -1; yi <= 1; yi++)
+                {
+                    for (int xi = -1; xi <= 1; xi++)
+                    {
+                        ShowContent(x + xi, y + yi);
+                    }
                 }
             }
         }
@@ -75,15 +98,46 @@ namespace SpellOfLust
 
     public class TileData
     {
-        public TileData(GameObject go)
+        public TileData(GameObject go, int x, int y)
         {
             Go = go;
-            Text = Go.GetComponentInChildren<TMP_Text>();
+            _x = x;
+            _y = y;
+            _text = Go.GetComponentInChildren<TMP_Text>();
+            _button = Go.GetComponent<Button>();
+            Go.GetComponent<Button>().onClick.AddListener(Click);
         }
 
+        public void Click()
+        {
+            MinesweeperManager.Instance.ShowContent(_x, _y);
+            if (HasMine)
+            {
+                // Boom
+            }
+        }
+
+        public void Show()
+        {
+            IsShown = true;
+            _button.interactable = false;
+
+            if (HasMine)
+            {
+                _text.text = "X";
+            }
+            else if (AdjacentMines > 0)
+            {
+                _text.text = AdjacentMines.ToString();
+            }
+        }
+
+        private int _x, _y;
         public GameObject Go { private set; get; }
-        public TMP_Text Text { private set; get; }
+        private readonly TMP_Text _text;
+        private readonly Button _button;
         public int AdjacentMines { set; get; }
         public bool HasMine { set; get; }
+        public bool IsShown { private set; get; }
     }
 }
