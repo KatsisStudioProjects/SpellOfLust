@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 1046922934326120640}
   - component: {fileID: 1046922934326120642}
   - component: {fileID: 1046922934326120641}
+  - component: {fileID: 1046922934326120643}
   m_Layer: 0
   m_Name: EarL_4
   m_TagString: Untagged
@@ -713,6 +714,7 @@ GameObject:
   - component: {fileID: 3630406324768378643}
   - component: {fileID: 3630406324768378645}
   - component: {fileID: 3630406324768378644}
+  - component: {fileID: 3630406324768378646}
   m_Layer: 0
   m_Name: TailR2
   m_TagString: Untagged
@@ -795,13 +797,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7765566530322198}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.70710677, w: 0.7071069}
+  m_LocalRotation: {x: -0, y: 0, z: -0.70710653, w: -0.70710707}
   m_LocalPosition: {x: 0.13621874, y: 2.9319375, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4367666194431536147}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 450}
 --- !u!254 &1046922934326120641
 RelativeJoint2D:
   m_ObjectHideFlags: 0
@@ -817,7 +819,7 @@ RelativeJoint2D:
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_MaxForce: 10000
-  m_MaxTorque: 20
+  m_MaxTorque: 30
   m_CorrectionScale: 0.04
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: -1.3801528, y: 0.0000020191073}
@@ -849,6 +851,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!231 &1046922934326120643
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765566530322198}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 5344216699745623097}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 1.3801525, y: -0.000002019107}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.005
+  m_DampingRatio: 0.5
+  m_Frequency: 10
 --- !u!1 &1100691238114392361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,6 +1097,7 @@ GameObject:
   - component: {fileID: 6880705869223883710}
   - component: {fileID: 6880705869223883712}
   - component: {fileID: 6880705869223883711}
+  - component: {fileID: 6880705869223883713}
   m_Layer: 0
   m_Name: EarR_5
   m_TagString: Untagged
@@ -1968,9 +1992,9 @@ RelativeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_BreakAction: 3
-  m_MaxForce: 10000
-  m_MaxTorque: 180
-  m_CorrectionScale: 0.3
+  m_MaxForce: 0.05
+  m_MaxTorque: 1
+  m_CorrectionScale: 1
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: -1.546747, y: 0.31542236}
   m_AngularOffset: -11.52606
@@ -2001,6 +2025,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!231 &3630406324768378646
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860954334148775496}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 9116346535491592493}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 1.5785801, y: -0.00000043213353}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.01
+  m_DampingRatio: 0.5
+  m_Frequency: 10
 --- !u!114 &3633197286972494655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,6 +2332,7 @@ GameObject:
   - component: {fileID: 6519690950380937338}
   - component: {fileID: 6519690950380937339}
   - component: {fileID: 6519690950380937340}
+  - component: {fileID: 6519690950380937341}
   m_Layer: 0
   m_Name: TailL2
   m_TagString: Untagged
@@ -3467,13 +3513,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4146433564305762463}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.99153215, w: 0.12986182}
+  m_LocalRotation: {x: -0, y: -0, z: 0.99237853, w: 0.12322741}
   m_LocalPosition: {x: -1.2929858, y: 1.9043357, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4367666194431536147}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 165.843}
 --- !u!50 &6519690950380937339
 Rigidbody2D:
   serializedVersion: 4
@@ -3515,12 +3561,33 @@ RelativeJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_BreakAction: 3
-  m_MaxForce: 10000
-  m_MaxTorque: 180
-  m_CorrectionScale: 0.3
+  m_MaxForce: 0.05
+  m_MaxTorque: 1
+  m_CorrectionScale: 1
   m_AutoConfigureOffset: 0
-  m_LinearOffset: {x: -1.7087538, y: 0.19712266}
-  m_AngularOffset: -6.580587
+  m_LinearOffset: {x: -1.7059624, y: 0.21996191}
+  m_AngularOffset: -7.3469887
+--- !u!231 &6519690950380937341
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146433564305762463}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 8356332358216468268}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 1.7200841, y: -0.00000089406933}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.01
+  m_DampingRatio: 0.5
+  m_Frequency: 10
 --- !u!212 &6527139074254980540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3737,6 +3804,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!231 &6880705869223883713
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553793495305550700}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 5893004774488558265}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 1.5544422, y: -0.00000008940697}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.005
+  m_DampingRatio: 0.5
+  m_Frequency: 10
 --- !u!1 &6944061429152980091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,8 +3960,8 @@ RelativeJoint2D:
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_MaxForce: 10000
-  m_MaxTorque: 180
-  m_CorrectionScale: 0.3
+  m_MaxTorque: 30
+  m_CorrectionScale: 0.03
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: -1.0436476, y: 0.18788882}
   m_AngularOffset: -10.205696
@@ -3937,8 +4025,8 @@ RelativeJoint2D:
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_MaxForce: 10000
-  m_MaxTorque: 180
-  m_CorrectionScale: 0.3
+  m_MaxTorque: 12
+  m_CorrectionScale: 0.05
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: -0.26066342, y: -1.0625304}
   m_AngularOffset: -8.058032
@@ -4482,8 +4570,8 @@ RelativeJoint2D:
   m_BreakTorque: Infinity
   m_BreakAction: 3
   m_MaxForce: 10000
-  m_MaxTorque: 180
-  m_CorrectionScale: 0.3
+  m_MaxTorque: 7.5
+  m_CorrectionScale: 0.03
   m_AutoConfigureOffset: 0
   m_LinearOffset: {x: -0.45122704, y: 0.63596827}
   m_AngularOffset: 26.936785
