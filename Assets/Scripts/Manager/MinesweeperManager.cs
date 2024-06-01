@@ -20,6 +20,8 @@ namespace SpellOfLust
         private const int Size = 20;
         private const int MineCount = 30;
 
+        private bool _isGenerated = false;
+
         private void Awake()
         {
             Instance = this;
@@ -38,12 +40,21 @@ namespace SpellOfLust
                     _grid[x, y] = data;
                 }
             }
+        }
+
+        public void GenerateIfNeeded(int ignoreX, int ignoreY)
+        {
+            if (_isGenerated) return;
+
+            _isGenerated = true;
 
             int mineLeft = MineCount;
             while (mineLeft > 0)
             {
                 var randX = Random.Range(0, Size);
                 var randY = Random.Range(0, Size);
+
+                if (randX == ignoreX && randY == ignoreY) continue;
 
                 var tile = _grid[randX, randY];
                 if (tile.HasMine) continue;
@@ -124,15 +135,21 @@ namespace SpellOfLust
             _button.OnRightClick.AddListener(Flag);
         }
 
+        private void PreCheck()
+        {
+            MinesweeperManager.Instance.GenerateIfNeeded(_x, _y);
+        }
+
         public void Click()
         {
+            PreCheck();
             if (!HasFlag)
             {
-                MinesweeperManager.Instance.ShowContent(_x, _y);
                 if (HasMine)
                 {
                     throw new System.Exception("Game lost");
                 }
+                MinesweeperManager.Instance.ShowContent(_x, _y);
             }
         }
 
@@ -153,6 +170,8 @@ namespace SpellOfLust
 
         public void Flag()
         {
+            PreCheck();
+
             HasFlag = !HasFlag;
             _button.Flagged = HasFlag;
 
