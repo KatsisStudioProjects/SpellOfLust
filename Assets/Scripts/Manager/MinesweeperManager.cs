@@ -21,12 +21,20 @@ namespace SpellOfLust.Manager
 
         private TileData[,] _grid;
 
-        private int Size => _info.Levels[_currentLevel].Size;
-        private int MineCount => _info.Levels[_currentLevel].MineCount;
+        private int Size => _info.Levels[CurrentLevel].Size;
+        private int MineCount => _info.Levels[CurrentLevel].MineCount;
 
-        private int _currentLevel;
+        /// <summary>
+        /// Current level index for our SO
+        /// </summary>
+        public int CurrentLevel { private set; get; }
 
+        /// <summary>
+        /// Were the mines already placed
+        /// </summary>
         private bool _isGenerated = false;
+
+        public int MaxLevel => _info.Levels.Length;
 
         private void Awake()
         {
@@ -59,7 +67,12 @@ namespace SpellOfLust.Manager
 
         public void IncreaseLevel()
         {
-            _currentLevel++; 
+            CurrentLevel++; 
+        }
+
+        public bool DidReachVictory()
+        {
+            return CurrentLevel == MaxLevel;
         }
 
         public void GenerateIfNeeded(int ignoreX, int ignoreY)
@@ -168,6 +181,7 @@ namespace SpellOfLust.Manager
                 if (HasMine)
                 {
                     MinesweeperManager.Instance.RegenerateBoard();
+                    AethraManager.Instance.Censor();
                     return;
                 }
                 MinesweeperManager.Instance.ShowContent(_x, _y);
@@ -179,11 +193,7 @@ namespace SpellOfLust.Manager
             IsShown = true;
             _button.Disable();
 
-            if (HasMine)
-            {
-                _text.text = "X";
-            }
-            else if (AdjacentMines > 0)
+            if (AdjacentMines > 0)
             {
                 _text.text = $"<color=#{_colors[AdjacentMines - 1].ToHexString()}>{AdjacentMines}</color>";
             }
@@ -198,9 +208,18 @@ namespace SpellOfLust.Manager
 
             if (MinesweeperManager.Instance.IsGameWon())
             {
-                AethraManager.Instance.NextJerk();
                 MinesweeperManager.Instance.IncreaseLevel();
-                MinesweeperManager.Instance.RegenerateBoard();
+
+                if (MinesweeperManager.Instance.DidReachVictory())
+                {
+                    AudioManager.Instance.IsMoaning = false;
+                    Debug.Log("You won!"); // TODO
+                }
+                else
+                {
+                    AethraManager.Instance.NextJerk(MinesweeperManager.Instance.CurrentLevel);
+                    MinesweeperManager.Instance.RegenerateBoard();
+                }
             }
         }
 
