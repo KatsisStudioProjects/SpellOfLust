@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace SpellOfLust
 {
@@ -94,6 +94,21 @@ namespace SpellOfLust
                 }
             }
         }
+
+        public bool IsGameWon()
+        {
+            for (int y = 0; y < Size; y++)
+            {
+                for (int x = 0; x < Size; x++)
+                {
+                    if (!_grid[x, y].DoesSatisfyVictory())
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 
     public class TileData
@@ -106,21 +121,25 @@ namespace SpellOfLust
             _text = Go.GetComponentInChildren<TMP_Text>();
             _button = Go.GetComponent<MineButton>();
             _button.OnLeftClick.AddListener(Click);
+            _button.OnRightClick.AddListener(Flag);
         }
 
         public void Click()
         {
-            MinesweeperManager.Instance.ShowContent(_x, _y);
-            if (HasMine)
+            if (!HasFlag)
             {
-                // Boom
+                MinesweeperManager.Instance.ShowContent(_x, _y);
+                if (HasMine)
+                {
+                    throw new System.Exception("Game lost");
+                }
             }
         }
 
         public void Show()
         {
             IsShown = true;
-            _button.Interactable = false;
+            _button.Disable();
 
             if (HasMine)
             {
@@ -128,8 +147,24 @@ namespace SpellOfLust
             }
             else if (AdjacentMines > 0)
             {
-                _text.text = AdjacentMines.ToString();
+                _text.text = $"<color=#{_colors[AdjacentMines - 1].ToHexString()}>{AdjacentMines}</color>";
             }
+        }
+
+        public void Flag()
+        {
+            HasFlag = !HasFlag;
+            _button.Flagged = HasFlag;
+
+            if (MinesweeperManager.Instance.IsGameWon())
+            {
+                Debug.Log("You won!");
+            }
+        }
+
+        public bool DoesSatisfyVictory()
+        {
+            return (HasFlag && HasMine) || (!HasFlag && !HasMine);
         }
 
         private int _x, _y;
@@ -138,6 +173,14 @@ namespace SpellOfLust
         private readonly MineButton _button;
         public int AdjacentMines { set; get; }
         public bool HasMine { set; get; }
+        public bool HasFlag { set; get; }
         public bool IsShown { private set; get; }
+
+        private static readonly Color[] _colors = new[]
+        {
+            Color.blue, new(0f, 139f / 255f, 0f), Color.red,
+            new(0f, 0f, 139f / 255f), new(165f / 255f, 42f / 255f, 42f / 255f), Color.cyan,
+            Color.black, Color.gray
+        };
     }
 }
