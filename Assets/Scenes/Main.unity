@@ -755,7 +755,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -780,7 +780,7 @@ Transform:
   m_GameObject: {fileID: 1368220290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.23, z: -10}
+  m_LocalPosition: {x: -0.45, y: 0.71, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -930,6 +930,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e42a4469196708945b263da68ff417fa, type: 3}
+--- !u!95 &1678389673 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2605503226351128706, guid: e42a4469196708945b263da68ff417fa, type: 3}
+  m_PrefabInstance: {fileID: 1678389672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1723433750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1787432247}
   - component: {fileID: 1787432246}
+  - component: {fileID: 1787432248}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1068,6 +1074,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787432248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787432245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0157d47d3b24a1e4fa3983ce53ce1632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 1678389673}
 --- !u!1 &1928959575
 GameObject:
   m_ObjectHideFlags: 0

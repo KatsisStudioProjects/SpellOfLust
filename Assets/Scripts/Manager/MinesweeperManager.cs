@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace SpellOfLust
+namespace SpellOfLust.Manager
 {
     public class MinesweeperManager : MonoBehaviour
     {
@@ -198,6 +198,7 @@ namespace SpellOfLust
 
             if (MinesweeperManager.Instance.IsGameWon())
             {
+                AethraManager.Instance.NextJerk();
                 MinesweeperManager.Instance.IncreaseLevel();
                 MinesweeperManager.Instance.RegenerateBoard();
             }
