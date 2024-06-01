@@ -212,6 +212,7 @@ namespace SpellOfLust.Manager
 
                 if (MinesweeperManager.Instance.DidReachVictory())
                 {
+                    AudioManager.Instance.IsMoaning = false;
                     Debug.Log("You won!"); // TODO
                 }
                 else
