@@ -55,9 +55,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CensorAmount: 72.6
+    - _CensorAmount: 75.61
     - _Chroma_Amount: -0.06
-    - _ColorOverlay: 0.4
+    - _ColorOverlay: 1.2
     - _Float: 25
     - _QueueControl: 0
     - _QueueOffset: 0
