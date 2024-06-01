@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace SpellOfLust.Manager
@@ -9,17 +10,36 @@ namespace SpellOfLust.Manager
         [SerializeField]
         private Animator _anim;
 
-        private int _nextJerk;
+        private bool _switchAuto = true;
+        private int[] _availableFaces = new[] { 1, 2, 4, 5, 6 };
 
         private void Awake()
         {
             Instance = this;
+
+            StartCoroutine(SwitchBetweenFaces());
         }
 
-        public void NextJerk()
+        private IEnumerator SwitchBetweenFaces()
         {
-            _nextJerk++;
-            _anim.Play($"Jerk{_nextJerk}");
+            while (_switchAuto)
+            {
+                _anim.SetTrigger($"Face{_availableFaces[Random.Range(0, _availableFaces.Length)]}");
+                yield return new WaitForSeconds(Random.Range(10f, 20f));
+            }
+        }
+
+        public void NextJerk(int level)
+        {
+            var max = MinesweeperManager.Instance.MaxLevel;
+
+            _anim.Play($"Jerk{level}");
+            _anim.SetBool("nude", level > max / 2);
+            if (level == max - 1)
+            {
+                _switchAuto = false;
+                _anim.SetTrigger("Face3");
+            }
         }
     }
 }
