@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f266551da398b8145ae42979d47633cf
+guid: 96277e1920db36f43a328eab70b91661
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6104993133772856055
-    second: Intro_Scene4png_0
+      213: -3240215509977729214
+    second: Intro_Scene1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -76,8 +76,8 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
+    compressionQuality: 100
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Intro_Scene4png_0
+      name: Intro_Scene1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7fadab6d8ea49b450800000000000000
-      internalID: 6104993133772856055
+      spriteID: 247f01c39217803d0800000000000000
+      internalID: -3240215509977729214
       vertices: []
       indices: 
       edges: []
@@ -159,7 +159,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Intro_Scene4png_0: 6104993133772856055
+      Intro_Scene1_0: -3240215509977729214
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
