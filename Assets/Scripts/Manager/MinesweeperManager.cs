@@ -104,8 +104,8 @@ namespace SpellOfLust
             _x = x;
             _y = y;
             _text = Go.GetComponentInChildren<TMP_Text>();
-            _button = Go.GetComponent<Button>();
-            Go.GetComponent<Button>().onClick.AddListener(Click);
+            _button = Go.GetComponent<MineButton>();
+            _button.OnLeftClick.AddListener(Click);
         }
 
         public void Click()
@@ -120,7 +120,7 @@ namespace SpellOfLust
         public void Show()
         {
             IsShown = true;
-            _button.interactable = false;
+            _button.Interactable = false;
 
             if (HasMine)
             {
@@ -135,7 +135,7 @@ namespace SpellOfLust
         private int _x, _y;
         public GameObject Go { private set; get; }
         private readonly TMP_Text _text;
-        private readonly Button _button;
+        private readonly MineButton _button;
         public int AdjacentMines { set; get; }
         public bool HasMine { set; get; }
         public bool IsShown { private set; get; }
