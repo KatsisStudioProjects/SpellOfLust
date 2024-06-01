@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: GameInfo
   m_EditorClassIdentifier: 
   Levels:
+  - Size: 5
+    MineCount: 5
   - Size: 10
-    MineCount: 10
-  - Size: 15
     MineCount: 15
+  - Size: 20
+    MineCount: 20
+  - Size: 20
+    MineCount: 20
   - Size: 20
     MineCount: 20
