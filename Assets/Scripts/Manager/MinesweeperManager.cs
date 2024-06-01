@@ -181,6 +181,7 @@ namespace SpellOfLust.Manager
                 if (HasMine)
                 {
                     MinesweeperManager.Instance.RegenerateBoard();
+                    AethraManager.Instance.Censor();
                     return;
                 }
                 MinesweeperManager.Instance.ShowContent(_x, _y);
@@ -192,11 +193,7 @@ namespace SpellOfLust.Manager
             IsShown = true;
             _button.Disable();
 
-            if (HasMine)
-            {
-                _text.text = "X";
-            }
-            else if (AdjacentMines > 0)
+            if (AdjacentMines > 0)
             {
                 _text.text = $"<color=#{_colors[AdjacentMines - 1].ToHexString()}>{AdjacentMines}</color>";
             }
