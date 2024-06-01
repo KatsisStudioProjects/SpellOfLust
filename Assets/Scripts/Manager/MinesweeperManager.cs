@@ -1,9 +1,10 @@
 using NUnit.Framework;
+using SpellOfLust.SO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace SpellOfLust
+namespace SpellOfLust.Manager
 {
     public class MinesweeperManager : MonoBehaviour
     {
@@ -15,10 +16,15 @@ namespace SpellOfLust
         [SerializeField]
         private GameObject _hLinePrefab, _tilePrefab;
 
+        [SerializeField]
+        private GameInfo _info;
+
         private TileData[,] _grid;
 
-        private const int Size = 20;
-        private const int MineCount = 30;
+        private int Size => _info.Levels[_currentLevel].Size;
+        private int MineCount => _info.Levels[_currentLevel].MineCount;
+
+        private int _currentLevel;
 
         private bool _isGenerated = false;
 
@@ -27,6 +33,13 @@ namespace SpellOfLust
             Instance = this;
 
             Assert.True(MineCount <= Size * Size);
+            RegenerateBoard();
+        }
+
+        public void RegenerateBoard()
+        {
+            for (int i = 0; i < _mainContainer.childCount; i++) Destroy(_mainContainer.GetChild(i).gameObject);
+
             _grid = new TileData[Size, Size];
 
             for (int y = 0; y < Size; y++)
@@ -40,6 +53,13 @@ namespace SpellOfLust
                     _grid[x, y] = data;
                 }
             }
+
+            _isGenerated = false;
+        }
+
+        public void IncreaseLevel()
+        {
+            _currentLevel++; 
         }
 
         public void GenerateIfNeeded(int ignoreX, int ignoreY)
@@ -147,7 +167,8 @@ namespace SpellOfLust
             {
                 if (HasMine)
                 {
-                    throw new System.Exception("Game lost");
+                    MinesweeperManager.Instance.RegenerateBoard();
+                    return;
                 }
                 MinesweeperManager.Instance.ShowContent(_x, _y);
             }
@@ -177,7 +198,9 @@ namespace SpellOfLust
 
             if (MinesweeperManager.Instance.IsGameWon())
             {
-                Debug.Log("You won!");
+                AethraManager.Instance.NextJerk();
+                MinesweeperManager.Instance.IncreaseLevel();
+                MinesweeperManager.Instance.RegenerateBoard();
             }
         }
 
