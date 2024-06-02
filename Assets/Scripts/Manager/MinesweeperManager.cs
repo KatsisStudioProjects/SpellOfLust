@@ -1,9 +1,9 @@
-using NUnit.Framework;
 using SpellOfLust.SO;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 
 namespace SpellOfLust.Manager
@@ -50,7 +50,8 @@ namespace SpellOfLust.Manager
         {
             Instance = this;
 
-            Assert.True(MineCount <= Size * Size);
+            Assert.IsTrue(MineCount <= Size * Size);
+
             RegenerateBoard();
 
             Timer = 0f;
