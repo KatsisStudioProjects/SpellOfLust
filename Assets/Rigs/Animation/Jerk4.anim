@@ -34722,4 +34722,60 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.35
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.76666665
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1666666
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5666667
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.3833334
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.8166666
+    functionName: PlaySoundFromEvent
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 39a0e8f541b43cc478d76943126ad0a7, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

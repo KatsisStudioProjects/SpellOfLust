@@ -1036,16 +1036,16 @@ AnimatorStateMachine:
     m_Position: {x: 10, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3685678075310975919}
-    m_Position: {x: 30, y: 310, z: 0}
+    m_Position: {x: 10, y: 300, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3053097908532185534}
-    m_Position: {x: 290, y: 120, z: 0}
+    m_Position: {x: 20, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7586834399388772869}
     m_Position: {x: 330, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5114707790947724097}
-    m_Position: {x: 240, y: 370, z: 0}
+    m_Position: {x: 20, y: 410, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
