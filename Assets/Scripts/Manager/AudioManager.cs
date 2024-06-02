@@ -8,33 +8,58 @@ namespace SpellOfLust.Manager
         public static AudioManager Instance { private set; get; }
 
         [SerializeField]
-        private AudioClip[] _moans;
+        private AudioClip[] _malemoans;
+
+        [SerializeField]
+        private Moans[] _femMoans;
+        private int _femIndex;
 
         private AudioSource _source;
-
-        public bool IsMoaning { set; private get; } = true;
 
         private void Awake()
         {
             Instance = this;
             _source = GetComponentInChildren<AudioSource>();
 
-            StartCoroutine(PlayMoans());
+            StartCoroutine(PlayMaleMoans());
+            StartCoroutine(PlayFemaleMoans());
         }
 
-        private IEnumerator PlayMoans()
+        public void IncreaseFemIndex()
+        {
+            _femIndex = 1;
+        }
+
+        private IEnumerator PlayMaleMoans()
         {
             yield return new WaitForSeconds(1f);
-            while (IsMoaning)
+            while (true)
             {
-                _source.PlayOneShot(_moans[Random.Range(0, _moans.Length)]);
+                _source.PlayOneShot(_malemoans[Random.Range(0, _malemoans.Length)]);
                 yield return new WaitForSeconds(Random.Range(4f, 5f));
             }
         }
-        
+
+        private IEnumerator PlayFemaleMoans()
+        {
+            yield return new WaitForSeconds(1.5f);
+            while (true)
+            {
+                var m = _femMoans[_femIndex].Clips;
+                _source.PlayOneShot(m[Random.Range(0, m.Length)]);
+                yield return new WaitForSeconds(Random.Range(3f, 6f));
+            }
+        }
+
         public void PlayOneShot(AudioClip audioClip)
         {
             _source.PlayOneShot(audioClip);
         }
+    }
+
+    [System.Serializable]
+    public class Moans
+    {
+        public AudioClip[] Clips;
     }
 }

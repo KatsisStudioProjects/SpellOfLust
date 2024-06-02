@@ -44,6 +44,10 @@ namespace SpellOfLust.Manager
 
             _anim.Play($"Jerk{level}");
             _anim.SetBool("nude", level > max / 2);
+            if (level == max / 2)
+            {
+                AudioManager.Instance.IncreaseFemIndex();
+            }
             if (level == max - 2)
             {
                 _mist.SetActive(true);
