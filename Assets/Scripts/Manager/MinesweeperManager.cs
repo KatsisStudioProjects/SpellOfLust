@@ -67,6 +67,26 @@ namespace SpellOfLust.Manager
         public void PlaySfxFlag() => AudioManager.Instance.PlayOneShot(_flag);
         public void PlaySfxTile() => AudioManager.Instance.PlayOneShot(_openTile);
 
+        public void LooseBoard()
+        {
+            CanInteract = false;
+            StartCoroutine(ShowError());
+        }
+        public IEnumerator ShowError()
+        {
+            for (int y = 0; y < Size; y++)
+            {
+                for (int x = 0; x < Size; x++)
+                {
+                    _grid[x, y].ErrorCheck();
+                }
+            }
+            yield return new WaitForSeconds(1f);
+            RegenerateBoard();
+            AethraManager.Instance.Censor();
+            PlaySfxLoose();
+            CanInteract = true;
+        }
         public void NewBoard()
         {
             CanInteract = false;
@@ -223,9 +243,7 @@ namespace SpellOfLust.Manager
             {
                 if (HasMine)
                 {
-                    MinesweeperManager.Instance.RegenerateBoard();
-                    AethraManager.Instance.Censor();
-                    MinesweeperManager.Instance.PlaySfxLoose();
+                    MinesweeperManager.Instance.LooseBoard();
                     return;
                 }
                 MinesweeperManager.Instance.ShowContent(_x, _y);
@@ -265,6 +283,14 @@ namespace SpellOfLust.Manager
                     MinesweeperManager.Instance.IncreaseLevel();
                     AethraManager.Instance.NextJerk(MinesweeperManager.Instance.CurrentLevel);
                 }
+            }
+        }
+
+        public void ErrorCheck()
+        {
+            if (HasMine)
+            {
+                _button.ShowMine(HasFlag);
             }
         }
 

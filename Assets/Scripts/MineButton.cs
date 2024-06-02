@@ -10,7 +10,8 @@ namespace SpellOfLust
         [SerializeField]
         private Color _normalColor, _hoverColor, _disabledColor, _flaggedColor, _validatedColor;
         [SerializeField]
-        private Sprite _disabledSprite, _flagSprite;
+        private Sprite _disabledSprite, _flagSprite, _mineSprite;
+        private Sprite _normalSprite;
         public UnityEvent OnLeftClick { private set; get; } = new();
         public UnityEvent OnRightClick { private set; get; } = new();
 
@@ -23,6 +24,13 @@ namespace SpellOfLust
             _interactable = false;
             _image.color = _disabledColor;
             _image.sprite = _disabledSprite;
+        }
+
+        public void ShowMine(bool isGood)
+        {
+            _interactable = false;
+            _image.sprite = _mineSprite;
+            _image.color = isGood ? _validatedColor : _flaggedColor;
         }
 
         private bool CanInteract => _interactable && !Flagged;
@@ -40,6 +48,7 @@ namespace SpellOfLust
                 else
                 {
                     _image.color = _isHovered ? _hoverColor : _normalColor;
+                    _image.sprite = _normalSprite;
                 }
             }
             get => _flagged;
@@ -51,6 +60,7 @@ namespace SpellOfLust
         {
             _image = GetComponent<Image>();
             _image.color = _normalColor;
+            _normalSprite = _image.sprite;
         }
 
         public void Validate()
