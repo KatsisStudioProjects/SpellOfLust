@@ -23,6 +23,8 @@ namespace SpellOfLust.Manager
 
         private TileData[,] _grid;
 
+        public float Timer { private set; get; }
+
         public bool CanInteract { private set; get; } = true;
 
         private int Size => _info.Levels[CurrentLevel].Size;
@@ -46,6 +48,16 @@ namespace SpellOfLust.Manager
 
             Assert.True(MineCount <= Size * Size);
             RegenerateBoard();
+
+            Timer = 0f;
+        }
+
+        private void Update()
+        {
+            if (CanInteract)
+            {
+                Timer += Time.deltaTime;
+            }
         }
 
         public void NewBoard()
