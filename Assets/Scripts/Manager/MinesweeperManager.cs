@@ -27,6 +27,7 @@ namespace SpellOfLust.Manager
         private TileData[,] _grid;
 
         public float Timer { private set; get; }
+        public int CensorCount { set; get; }
 
         public bool CanInteract { private set; get; } = true;
 
@@ -53,6 +54,7 @@ namespace SpellOfLust.Manager
             RegenerateBoard();
 
             Timer = 0f;
+            CensorCount = 0;
         }
 
         private void Update()
@@ -228,6 +230,7 @@ namespace SpellOfLust.Manager
 
                     HasFlag = true;
                     _button.ShowMine();
+                    MinesweeperManager.Instance.CensorCount++;
                     CheckVictory();
                     return;
                 }
