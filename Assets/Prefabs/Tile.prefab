@@ -74,7 +74,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 5396035721174789818}
   - component: {fileID: 5537665260493036136}
   - component: {fileID: -5184679210705394972}
+  - component: {fileID: 3692675449533895428}
   m_Layer: 5
   m_Name: Tile
   m_TagString: Untagged
@@ -195,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: ea3c865070931cb469b8c448e0067534, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -203,7 +204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7375389693111975164, guid: 813d0d54c26858242b210499e7e88ca3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -225,7 +226,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87df01e006b2b342b014fd741e768e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _normalColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
-  _hoverColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  _normalColor: {r: 0.6430255, g: 0.23113209, b: 1, a: 1}
+  _hoverColor: {r: 0.26806703, g: 0.15218939, b: 0.5660378, a: 1}
   _disabledColor: {r: 1, g: 1, b: 1, a: 1}
   _flaggedColor: {r: 1, g: 0, b: 0, a: 1}
+  _disabledSprite: {fileID: -6561638262626599477, guid: 2fe6b1af991f5b34f95eb34ee9d6f17e, type: 3}
+--- !u!95 &3692675449533895428
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833383277631421532}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a13d7407377144348b6f96a609be9489, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

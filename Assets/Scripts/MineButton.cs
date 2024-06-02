@@ -9,7 +9,8 @@ namespace SpellOfLust
     {
         [SerializeField]
         private Color _normalColor, _hoverColor, _disabledColor, _flaggedColor;
-
+        [SerializeField]
+        private Sprite _disabledSprite;
         public UnityEvent OnLeftClick { private set; get; } = new();
         public UnityEvent OnRightClick { private set; get; } = new();
 
@@ -21,6 +22,7 @@ namespace SpellOfLust
         {
             _interactable = false;
             _image.color = _disabledColor;
+            _image.sprite = _disabledSprite;
         }
 
         private bool CanInteract => _interactable && !Flagged;
