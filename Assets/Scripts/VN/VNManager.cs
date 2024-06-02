@@ -4,12 +4,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Sketch.VN
 {
     public class VNManager : MonoBehaviour
     {
-        public static bool QuickRetry = false;
         public static VNManager Instance { private set; get; }
 
         [SerializeField]
@@ -18,18 +18,24 @@ namespace Sketch.VN
         [SerializeField]
         private TextAsset _intro;
 
+        [SerializeField]
+        private Image _imageContainer;
+
+        [SerializeField]
+        private Sprite[] _images;
+        private int _imageIndex;
+
         private Story _story;
 
         private bool _isSkipEnabled;
         private float _skipTimer;
-        private float _skipTimerRef = .1f;
+        private readonly float _skipTimerRef = .1f;
 
         private void Awake()
         {
             Instance = this;
             ShowStory(_intro);
         }
-
 
         private void Update()
         {
@@ -44,6 +50,11 @@ namespace Sketch.VN
             }
         }
 
+        public void ShowImage()
+        {
+            _imageContainer.sprite = _images[_imageIndex];
+        }
+
         private void ResetVN()
         {
             _isSkipEnabled = false;
@@ -51,10 +62,10 @@ namespace Sketch.VN
 
         public void ShowStory(TextAsset asset)
         {
-            Debug.Log($"[STORY] Playing {asset.name}");
             _story = new(asset.text);
             ResetVN();
             DisplayStory(_story.Continue());
+            ShowImage();
         }
 
         private void DisplayStory(string text)
@@ -73,6 +84,8 @@ namespace Sketch.VN
                 !_story.currentChoices.Any()) // We are not currently in a choice
             {
                 DisplayStory(_story.Continue());
+                _imageIndex++;
+                ShowImage();
             }
             else if (!_story.canContinue && !_story.currentChoices.Any())
             {
