@@ -10,7 +10,7 @@ namespace SpellOfLust
         [SerializeField]
         private Color _normalColor, _hoverColor, _disabledColor, _flaggedColor, _validatedColor;
         [SerializeField]
-        private Sprite _disabledSprite;
+        private Sprite _disabledSprite, _flagSprite;
         public UnityEvent OnLeftClick { private set; get; } = new();
         public UnityEvent OnRightClick { private set; get; } = new();
 
@@ -35,6 +35,7 @@ namespace SpellOfLust
                 if (value)
                 {
                     _image.color = _flaggedColor;
+                    _image.sprite = _flagSprite;
                 }
                 else
                 {
