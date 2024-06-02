@@ -21,6 +21,9 @@ namespace SpellOfLust.Manager
         [SerializeField]
         private GameInfo _info;
 
+        [SerializeField]
+        private AudioClip _clickMine, _flag, _openTile;
+
         private TileData[,] _grid;
 
         public float Timer { private set; get; }
@@ -59,6 +62,10 @@ namespace SpellOfLust.Manager
                 Timer += Time.deltaTime;
             }
         }
+
+        public void PlaySfxLoose() => AudioManager.Instance.PlayOneShot(_clickMine);
+        public void PlaySfxFlag() => AudioManager.Instance.PlayOneShot(_flag);
+        public void PlaySfxTile() => AudioManager.Instance.PlayOneShot(_openTile);
 
         public void NewBoard()
         {
@@ -218,9 +225,11 @@ namespace SpellOfLust.Manager
                 {
                     MinesweeperManager.Instance.RegenerateBoard();
                     AethraManager.Instance.Censor();
+                    MinesweeperManager.Instance.PlaySfxLoose();
                     return;
                 }
                 MinesweeperManager.Instance.ShowContent(_x, _y);
+                MinesweeperManager.Instance.PlaySfxTile();
             }
         }
 
@@ -242,6 +251,7 @@ namespace SpellOfLust.Manager
 
             HasFlag = !HasFlag;
             _button.Flagged = HasFlag;
+            MinesweeperManager.Instance.PlaySfxFlag();
 
             if (MinesweeperManager.Instance.IsGameWon())
             {

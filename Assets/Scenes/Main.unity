@@ -1650,6 +1650,9 @@ MonoBehaviour:
   _hLinePrefab: {fileID: 403593349650818754, guid: 7134f25526d60d34d8352e80768253ca, type: 3}
   _tilePrefab: {fileID: 8833383277631421532, guid: 32f059078ed3ff04f844f6e8e225d348, type: 3}
   _info: {fileID: 11400000, guid: edb00583750384b4c966538c9176ca21, type: 2}
+  _clickMine: {fileID: 8300000, guid: ef42c7ebc10ecae4c9a10b176dfee243, type: 3}
+  _flag: {fileID: 8300000, guid: 5e3ddfb02f60b46428597757956315be, type: 3}
+  _openTile: {fileID: 8300000, guid: 81d21ebc101b10b4f91db0353b53007a, type: 3}
 --- !u!4 &1787432247
 Transform:
   m_ObjectHideFlags: 0
