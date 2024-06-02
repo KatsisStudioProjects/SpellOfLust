@@ -31,5 +31,10 @@ namespace SpellOfLust.Manager
                 yield return new WaitForSeconds(Random.Range(4f, 5f));
             }
         }
+        
+        public void PlayOneShot(AudioClip audioClip)
+        {
+            _source.PlayOneShot(audioClip);
+        }
     }
 }
