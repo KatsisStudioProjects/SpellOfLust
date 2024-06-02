@@ -26,11 +26,11 @@ namespace SpellOfLust
             _image.sprite = _disabledSprite;
         }
 
-        public void ShowMine(bool isGood)
+        public void ShowMine()
         {
             _interactable = false;
             _image.sprite = _mineSprite;
-            _image.color = isGood ? _validatedColor : _flaggedColor;
+            _image.color = _flaggedColor;
         }
 
         private bool CanInteract => _interactable && !Flagged;
