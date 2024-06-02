@@ -1,19 +1,19 @@
 using Ink.Runtime;
-using SpellOfLust.VN;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Sketch.VN
+namespace SpellOfLust.VN
 {
     public class VNManager : MonoBehaviour
     {
         public static VNManager Instance { private set; get; }
 
         [SerializeField]
-        private TextDisplay _display;
+        private TMP_Text _display;
 
         [SerializeField]
         private TextAsset _intro;
@@ -70,17 +70,12 @@ namespace Sketch.VN
 
         private void DisplayStory(string text)
         {
-            _display.ToDisplay = text;
+            _display.text = text;
         }
 
         public void DisplayNextDialogue()
         {
-            if (!_display.IsDisplayDone)
-            {
-                // We are slowly displaying a text, force the whole display
-                _display.ForceDisplay();
-            }
-            else if (_story.canContinue && // There is text left to write
+            if (_story.canContinue && // There is text left to write
                 !_story.currentChoices.Any()) // We are not currently in a choice
             {
                 DisplayStory(_story.Continue());
