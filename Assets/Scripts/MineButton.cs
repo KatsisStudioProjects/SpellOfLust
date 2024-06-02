@@ -8,7 +8,7 @@ namespace SpellOfLust
     public class MineButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         [SerializeField]
-        private Color _normalColor, _hoverColor, _disabledColor, _flaggedColor;
+        private Color _normalColor, _hoverColor, _disabledColor, _flaggedColor, _validatedColor;
         [SerializeField]
         private Sprite _disabledSprite;
         public UnityEvent OnLeftClick { private set; get; } = new();
@@ -50,6 +50,11 @@ namespace SpellOfLust
         {
             _image = GetComponent<Image>();
             _image.color = _normalColor;
+        }
+
+        public void Validate()
+        {
+            _image.color = _validatedColor;
         }
 
         public void OnPointerClick(PointerEventData eventData)

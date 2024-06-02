@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FractalTile4_0: -7375389693111975164
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

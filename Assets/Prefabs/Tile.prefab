@@ -174,7 +174,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5396035721174789818
 CanvasRenderer:
@@ -230,6 +230,7 @@ MonoBehaviour:
   _hoverColor: {r: 0.26806703, g: 0.15218939, b: 0.5660378, a: 1}
   _disabledColor: {r: 1, g: 1, b: 1, a: 1}
   _flaggedColor: {r: 1, g: 0, b: 0, a: 1}
+  _validatedColor: {r: 0, g: 1, b: 0, a: 1}
   _disabledSprite: {fileID: -6561638262626599477, guid: 2fe6b1af991f5b34f95eb34ee9d6f17e, type: 3}
 --- !u!95 &3692675449533895428
 Animator:

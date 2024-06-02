@@ -1,8 +1,10 @@
 using NUnit.Framework;
 using SpellOfLust.SO;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SpellOfLust.Manager
 {
@@ -20,6 +22,10 @@ namespace SpellOfLust.Manager
         private GameInfo _info;
 
         private TileData[,] _grid;
+
+        public float Timer { private set; get; }
+
+        public bool CanInteract { private set; get; } = true;
 
         private int Size => _info.Levels[CurrentLevel].Size;
         private int MineCount => _info.Levels[CurrentLevel].MineCount;
@@ -41,6 +47,35 @@ namespace SpellOfLust.Manager
             Instance = this;
 
             Assert.True(MineCount <= Size * Size);
+            RegenerateBoard();
+
+            Timer = 0f;
+        }
+
+        private void Update()
+        {
+            if (CanInteract)
+            {
+                Timer += Time.deltaTime;
+            }
+        }
+
+        public void NewBoard()
+        {
+            CanInteract = false;
+            StartCoroutine(ShowValidation());
+        }
+        private IEnumerator ShowValidation()
+        {
+            for (int y = 0; y < Size; y++)
+            {
+                for (int x = 0; x < Size; x++)
+                {
+                    _grid[x, y].ValidateIfMine();
+                }
+            }
+            yield return new WaitForSeconds(1f);
+            CanInteract = true;
             RegenerateBoard();
         }
 
@@ -72,7 +107,7 @@ namespace SpellOfLust.Manager
 
         public bool DidReachVictory()
         {
-            return CurrentLevel == MaxLevel;
+            return CurrentLevel == MaxLevel - 1;
         }
 
         public void GenerateIfNeeded(int ignoreX, int ignoreY)
@@ -175,6 +210,7 @@ namespace SpellOfLust.Manager
 
         public void Click()
         {
+            if (!MinesweeperManager.Instance.CanInteract) return;
             PreCheck();
             if (!HasFlag)
             {
@@ -201,6 +237,7 @@ namespace SpellOfLust.Manager
 
         public void Flag()
         {
+            if (!MinesweeperManager.Instance.CanInteract) return;
             PreCheck();
 
             HasFlag = !HasFlag;
@@ -208,18 +245,24 @@ namespace SpellOfLust.Manager
 
             if (MinesweeperManager.Instance.IsGameWon())
             {
-                MinesweeperManager.Instance.IncreaseLevel();
-
                 if (MinesweeperManager.Instance.DidReachVictory())
                 {
-                    AudioManager.Instance.IsMoaning = false;
-                    Debug.Log("You won!"); // TODO
+                    SceneManager.LoadScene("Victory");
                 }
                 else
                 {
+                    MinesweeperManager.Instance.NewBoard();
+                    MinesweeperManager.Instance.IncreaseLevel();
                     AethraManager.Instance.NextJerk(MinesweeperManager.Instance.CurrentLevel);
-                    MinesweeperManager.Instance.RegenerateBoard();
                 }
+            }
+        }
+
+        public void ValidateIfMine()
+        {
+            if (HasMine)
+            {
+                _button.Validate();
             }
         }
 
@@ -228,7 +271,7 @@ namespace SpellOfLust.Manager
             return (HasFlag && HasMine) || (!HasFlag && !HasMine);
         }
 
-        private int _x, _y;
+        private readonly int _x, _y;
         public GameObject Go { private set; get; }
         private readonly TMP_Text _text;
         private readonly MineButton _button;

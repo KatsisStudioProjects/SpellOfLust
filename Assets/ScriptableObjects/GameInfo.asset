@@ -15,11 +15,11 @@ MonoBehaviour:
   Levels:
   - Size: 6
     MineCount: 3
-  - Size: 12
-    MineCount: 15
+  - Size: 10
+    MineCount: 10
   - Size: 15
     MineCount: 25
-  - Size: 20
+  - Size: 17
     MineCount: 30
   - Size: 20
     MineCount: 45
