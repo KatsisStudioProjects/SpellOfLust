@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace SpellOfLust.Manager
@@ -198,6 +199,42 @@ namespace SpellOfLust.Manager
             }
             return true;
         }
+
+        public void OnMainClick(InputAction.CallbackContext value)
+        {
+            if (value.performed && _grid.Length == Size * Size)
+            {
+                for (int y = 0; y < Size; y++)
+                {
+                    for (int x = 0; x < Size; x++)
+                    {
+                        if (_grid[x, y].Button.IsHovered)
+                        {
+                            _grid[x, y].Button.MainClick();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void OnAltClick(InputAction.CallbackContext value)
+        {
+            if (value.performed && _grid.Length == Size * Size)
+            {
+                for (int y = 0; y < Size; y++)
+                {
+                    for (int x = 0; x < Size; x++)
+                    {
+                        if (_grid[x, y].Button.IsHovered)
+                        {
+                            _grid[x, y].Button.AltClick();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public class TileData
@@ -208,9 +245,9 @@ namespace SpellOfLust.Manager
             _x = x;
             _y = y;
             _text = Go.GetComponentInChildren<TMP_Text>();
-            _button = Go.GetComponent<MineButton>();
-            _button.OnLeftClick.AddListener(Click);
-            _button.OnRightClick.AddListener(Flag);
+            Button = Go.GetComponent<MineButton>();
+            Button.OnLeftClick.AddListener(Click);
+            Button.OnRightClick.AddListener(Flag);
         }
 
         private void PreCheck()
@@ -230,7 +267,7 @@ namespace SpellOfLust.Manager
                     MinesweeperManager.Instance.PlaySfxLoose();
 
                     HasFlag = true;
-                    _button.ShowMine();
+                    Button.ShowMine();
                     MinesweeperManager.Instance.CensorCount++;
                     CheckVictory();
                     return;
@@ -243,7 +280,7 @@ namespace SpellOfLust.Manager
         public void Show()
         {
             IsShown = true;
-            _button.Disable();
+            Button.Disable();
 
             if (AdjacentMines > 0)
             {
@@ -257,7 +294,7 @@ namespace SpellOfLust.Manager
             PreCheck();
 
             HasFlag = !HasFlag;
-            _button.Flagged = HasFlag;
+            Button.Flagged = HasFlag;
             MinesweeperManager.Instance.PlaySfxFlag();
 
             CheckVictory();
@@ -284,7 +321,7 @@ namespace SpellOfLust.Manager
         {
             if (HasMine)
             {
-                _button.Validate();
+                Button.Validate();
             }
         }
 
@@ -296,7 +333,7 @@ namespace SpellOfLust.Manager
         private readonly int _x, _y;
         public GameObject Go { private set; get; }
         private readonly TMP_Text _text;
-        private readonly MineButton _button;
+        public readonly MineButton Button;
         public int AdjacentMines { set; get; }
         public bool HasMine { set; get; }
         public bool HasFlag { set; get; }

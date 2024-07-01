@@ -47,14 +47,14 @@ namespace SpellOfLust
                 }
                 else
                 {
-                    _image.color = _isHovered ? _hoverColor : _normalColor;
+                    _image.color = IsHovered ? _hoverColor : _normalColor;
                     _image.sprite = _normalSprite;
                 }
             }
             get => _flagged;
         }
 
-        private bool _isHovered;
+        public bool IsHovered { private set; get; }
 
         private void Awake()
         {
@@ -68,27 +68,37 @@ namespace SpellOfLust
             _image.color = _validatedColor;
         }
 
+        public void MainClick()
+        {
+            if (!Flagged)
+            {
+                OnLeftClick?.Invoke();
+            }
+        }
+
+        public void AltClick()
+        {
+            OnRightClick?.Invoke();
+        }
+
         public void OnPointerClick(PointerEventData eventData)
         {
             if (_interactable)
             {
                 if (eventData.button == PointerEventData.InputButton.Left)
                 {
-                    if (!Flagged)
-                    {
-                        OnLeftClick?.Invoke();
-                    }
+                    MainClick();
                 }
                 else if (eventData.button == PointerEventData.InputButton.Right)
                 {
-                    OnRightClick?.Invoke();
+                    AltClick();
                 }
             }
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _isHovered = true;
+            IsHovered = true;
             if (CanInteract)
             {
                 _image.color = _hoverColor;
@@ -97,7 +107,7 @@ namespace SpellOfLust
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            _isHovered = false;
+            IsHovered = false;
             if (CanInteract)
             {
                 _image.color = _normalColor;
