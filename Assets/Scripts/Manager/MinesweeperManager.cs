@@ -210,7 +210,7 @@ namespace SpellOfLust.Manager
                     {
                         if (_grid[x, y].Button.IsHovered)
                         {
-                            _grid[x, y].Button.MainClick();
+                            if (_grid[x, y].Button.ButtonEnabled) _grid[x, y].Button.MainClick();
                             return;
                         }
                     }
@@ -228,7 +228,7 @@ namespace SpellOfLust.Manager
                     {
                         if (_grid[x, y].Button.IsHovered)
                         {
-                            _grid[x, y].Button.AltClick();
+                            if (_grid[x, y].Button.ButtonEnabled) _grid[x, y].Button.AltClick();
                             return;
                         }
                     }
@@ -280,6 +280,7 @@ namespace SpellOfLust.Manager
         public void Show()
         {
             IsShown = true;
+            HasFlag = false;
             Button.Disable();
 
             if (AdjacentMines > 0)

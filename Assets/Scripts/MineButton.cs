@@ -15,6 +15,8 @@ namespace SpellOfLust
         public UnityEvent OnLeftClick { private set; get; } = new();
         public UnityEvent OnRightClick { private set; get; } = new();
 
+        public bool ButtonEnabled => _interactable;
+
         private Image _image;
 
         private bool _interactable = true;
